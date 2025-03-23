@@ -1,0 +1,47 @@
+# dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# FFmpeg binaries
+bin/*.exe
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.*
+npm-debug.log*
+yarn-*.log*
+
+# Temp files
+temp/
+*.mp3
+*.webm
+*.m4a
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db\
+
+
+.env
