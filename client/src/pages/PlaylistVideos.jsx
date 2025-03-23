@@ -72,15 +72,28 @@ const PlaylistVideos = () => {
           withCredentials: true
         });
         
-        if (response.data) {
-          setPlaylist(response.data);
-          if (response.data.videos?.length > 0) {
-            setSelectedVideo(response.data.videos[0]);
+        if (response.data?.videos) {
+          // Transform the YouTube API response
+          const transformedData = {
+            title: response.data.videos[0]?.snippet?.channelTitle || 'Playlist',
+            videoCount: response.data.videos.length || 0,
+            videos: response.data.videos.map(item => ({
+              id: item.snippet.resourceId.videoId,
+              title: item.snippet.title,
+              description: item.snippet.description,
+              thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.default?.url,
+              position: item.snippet.position
+            }))
+          };
+          
+          setPlaylist(transformedData);
+          if (transformedData.videos.length > 0) {
+            setSelectedVideo(transformedData.videos[0]);
           }
         }
       } catch (error) {
         console.error('Error fetching playlist data:', error);
-        setError(error.message);
+        setError(error.message || 'Failed to load playlist videos');
       } finally {
         setLoading(false);
       }
@@ -163,7 +176,7 @@ const PlaylistVideos = () => {
                     {selectedVideo.title}
                   </h2>
                   <button
-                    onClick={() => navigate(`/quiz/${playlistId}`)}
+                    onClick={() => navigate(`/quiz/${selectedVideo.id}`)}
                     className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

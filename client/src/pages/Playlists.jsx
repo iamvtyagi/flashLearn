@@ -58,13 +58,22 @@ const Playlists = () => {
       setLoading(true);
       setError(null);
       
-      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/playlist-videos`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/search`, {
         params: { query },
         withCredentials: true
       });
       
-      if (response.data.success) {
-        setPlaylists(response.data.playlists);
+      if (response.data.playlists) {
+        // Transform the YouTube API response to match your component's format
+        const transformedPlaylists = response.data.playlists.map(item => ({
+          id: item.id.playlistId,
+          title: item.snippet.title,
+          description: item.snippet.description,
+          thumbnail: item.snippet.thumbnails.high.url,
+          channelTitle: item.snippet.channelTitle
+        }));
+        
+        setPlaylists(transformedPlaylists);
       } else {
         throw new Error(response.data.error || 'Failed to fetch playlists');
       }
