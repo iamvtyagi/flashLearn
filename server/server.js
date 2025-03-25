@@ -10,6 +10,7 @@ const searchRoutes = require("./routes/search");
 const playlistRoutes = require("./routes/playlist");
 const quizRoutes = require("./routes/quiz");
 const videoRoutes = require("./routes/video");
+const userModel = require('./models/user.model'); 
 
 dotenv.config();
 
@@ -46,6 +47,17 @@ app.use("/api", searchRoutes);
 app.use("/api", playlistRoutes);
 app.use("/api", quizRoutes);
 app.use("/api", videoRoutes);
+
+
+app.get('/users', async (req, res) => {
+  try {
+      const users = await userModel.find(); // Sare users ko fetch karega
+      res.json(users);
+  } catch (error) {
+      res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {

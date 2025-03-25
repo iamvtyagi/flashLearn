@@ -28,7 +28,7 @@ const Quiz = () => {
 
       // Make the API call with authorization header
       const response = await axios.post(
-        'http://localhost:5000/api/process-video',
+        `${import.meta.env.VITE_API_URL}/api/process-video`,
         {
           videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
           videoId: videoId

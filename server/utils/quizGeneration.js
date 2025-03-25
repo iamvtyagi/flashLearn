@@ -10,7 +10,7 @@ const generateMCQs = async (transcript) => {
         console.log('Generating MCQs from transcript...');
         console.log(transcript)
         
-        const prompt = `Generate 5 multiple choice questions based on the following transcript. Return ONLY a JSON array without any markdown formatting or additional text. Each question should be a JSON object with this exact structure:
+        const prompt = `Generate 10 multiple choice questions based on the following transcript. Return ONLY a JSON array without any markdown formatting or additional text. Each question should be a JSON object with this exact structure:
         {
             "question": "The question text",
             "options": ["option1", "option2", "option3", "option4"],

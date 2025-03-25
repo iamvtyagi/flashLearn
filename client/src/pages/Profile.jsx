@@ -77,7 +77,7 @@ const Profile = () => {
                   Edit Profile
                 </button>
                 <button className="border border-gray-300 px-4 py-2 rounded-md">
-                  Change Password
+                  message
                 </button>
               </div>
             </div>

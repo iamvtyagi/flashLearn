@@ -28,7 +28,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         select : false  // esse jab bhi ham user ko find krega to password nhi show krega
-      }
+      },
+    quizzes: {
+        totalQuizzes: {
+            type: Number,
+            default: 0
+        },
+        totalScore: {
+            type: Number,
+            default: 0
+        }
+    }
 });
 
 // Methods for userSchema

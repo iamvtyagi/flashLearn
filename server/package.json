@@ -33,6 +33,8 @@
     "node-whisper": "^2024.11.13",
     "openai": "^4.89.0",
     "play-dl": "^1.9.7",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "youtube-dl-exec": "^3.0.13",
     "ytdl-core": "^4.11.5"
   },

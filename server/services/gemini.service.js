@@ -30,7 +30,7 @@ const generateQuiz = async (transcript) => {
     }
 
     Rules:
-    - Generate exactly 5 MCQs
+    - Generate exactly 10 MCQs
     - Questions must be clear and concise
     - Each question must have 4 options (A, B, C, D)
     - Provide correct answer and explanation
