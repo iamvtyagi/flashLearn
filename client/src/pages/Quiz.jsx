@@ -58,7 +58,7 @@ const Quiz = ({ mcqs: providedMcqs }) => {
         if (!mcqs) return;
 
         const currentQ = mcqs[currentQuestion];
-        const isCorrect = selectedOption === currentQ.correctAnswer;
+        const isCorrect = selectedOption === currentQ.answer;
 
         if (isCorrect) {
             setScore(score + 1);
