@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PlaylistSearch from '../components/PlaylistSearch';
 import QuizComponent from '../components/Quiz';
@@ -8,6 +8,32 @@ const LearningPage = () => {
   const [quiz, setQuiz] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Function to search for playlists
+  const searchPlaylists = async (query) => {
+    setLoading(true);
+    setError('');
+    
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/search?query=${query}`);
+      // Assuming the response contains playlists
+      if (response.data.playlists) {
+        // Handle the playlists (you may want to set them in state)
+        console.log(response.data.playlists); // For debugging
+      } else {
+        throw new Error('No playlists found');
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to fetch playlists');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Automatically search for "react" when the component mounts
+  useEffect(() => {
+    searchPlaylists('react');
+  }, []);
 
   const handleVideoSelect = (video) => {
     setSelectedVideo(video);

@@ -54,6 +54,40 @@ const Quiz = ({ mcqs: providedMcqs }) => {
         }
     };
 
+    const updateQuizStats = async (finalScore) => {
+        try {
+            const token = localStorage.getItem("token");
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            
+            if (!userData || !userData.email) {
+                console.error("User data not found in localStorage");
+                return;
+            }
+
+            const response = await axios.post(
+                `${import.meta.env.VITE_API_URL}/api/quiz/update-stats`,
+                {
+                    email: userData.email,
+                    score: finalScore
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    }
+                }
+            );
+
+            if (response.data.success) {
+                // Update localStorage with new stats
+                userData.quizzes = response.data.quizzes;
+                localStorage.setItem('userData', JSON.stringify(userData));
+            }
+        } catch (error) {
+            console.error("Error updating quiz stats:", error);
+        }
+    };
+
     const handleAnswer = (selectedOption) => {
         if (!mcqs) return;
 
@@ -67,6 +101,9 @@ const Quiz = ({ mcqs: providedMcqs }) => {
         if (currentQuestion < mcqs.length - 1) {
             setCurrentQuestion(currentQuestion + 1);
         } else {
+            // Calculate final score based on correct answers
+            const finalScore = score + (isCorrect ? 1 : 0);
+            updateQuizStats(finalScore);
             setShowResults(true);
         }
     };
