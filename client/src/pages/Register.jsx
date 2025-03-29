@@ -49,122 +49,125 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen w-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-blue-600">QuizPlay Learn</h1>
-          <p className="text-gray-600 mt-2">Sign up to continue learning</p>
-        </div>
+    <div className="min-h-screen w-screen flex bg-gradient-to-br from-[#4285F4]/10 to-[#F8F9FA]">
+      <div className="w-full max-w-md m-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-extrabold bg-gradient-to-r from-[#4285F4] to-[#FF6D00] bg-clip-text text-transparent">
+              Create Account
+            </h2>
+            <p className="mt-3 text-[#2D3748] text-sm">
+              Join our community of learners
+            </p>
+          </div>
 
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full">
+          {/* Google Sign Up Button */}
           <button
             type="button"
-            className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-6"
+            className="w-full flex items-center justify-center px-4 py-3 rounded-lg border-2 border-gray-200 bg-white hover:bg-gray-50 transition-all duration-200"
           >
             <img
               src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
               alt="Google"
-              className="w-5 h-5"
+              className="h-5 w-5 mr-3"
             />
-            Continue with Google
+            <span className="text-[#2D3748] font-medium">Sign up with Google</span>
           </button>
 
-          <div className="relative my-6">
+          {/* Divider */}
+          <div className="my-6 relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
+              <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with email</span>
+              <span className="px-4 bg-white text-gray-500">or sign up with email</span>
             </div>
           </div>
 
+          {/* Error Message */}
           {error && (
-            <div className="mb-4 p-3 rounded bg-red-50 text-red-500 text-sm">
+            <div className="mb-6 p-3 rounded-lg bg-[#EA4335]/10 border border-[#EA4335]/20 text-[#EA4335] text-sm">
               {error}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Registration Form */}
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="firstname" className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-[#2D3748] mb-2">
                   First Name
                 </label>
                 <input
                   type="text"
-                  id="firstname"
                   name="firstname"
                   value={formData.firstname}
                   onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]/20 focus:border-[#4285F4] transition-all duration-200"
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="First name"
                 />
               </div>
               <div>
-                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-[#2D3748] mb-2">
                   Last Name
                 </label>
                 <input
                   type="text"
-                  id="lastname"
                   name="lastname"
                   value={formData.lastname}
                   onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]/20 focus:border-[#4285F4] transition-all duration-200"
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Last name"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-[#2D3748] mb-2">
                 Email
               </label>
               <input
                 type="email"
-                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]/20 focus:border-[#4285F4] transition-all duration-200"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-[#2D3748] mb-2">
                 Password
               </label>
               <input
                 type="password"
-                id="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]/20 focus:border-[#4285F4] transition-all duration-200"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Create a password"
               />
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
-              className={`w-full bg-blue-600 text-white rounded-lg px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+              className={`w-full py-3 px-4 rounded-lg bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-medium transition-all duration-200 ${
                 loading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
-              {loading ? 'Creating Account...' : 'Sign Up'}
+              {loading ? 'Creating Account...' : 'Create Account'}
             </button>
           </form>
         </div>
 
-        <p className="text-center mt-6 text-gray-600">
+        {/* Sign In Link */}
+        <p className="mt-6 text-center text-[#2D3748]">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+          <Link to="/login" className="font-medium text-[#4285F4] hover:text-[#4285F4]/80">
             Sign in
           </Link>
         </p>

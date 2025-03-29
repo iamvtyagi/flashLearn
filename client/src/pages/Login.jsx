@@ -59,125 +59,125 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen  w-screen flex flex-col justify-center items-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-blue-600">
-            QuizPlay Learn
-          </h2>
-          <h3 className="mt-2 text-sm text-gray-600">
-            Sign in to continue learning
-          </h3>
-        </div>
+    <div className="min-h-screen w-screen flex bg-gradient-to-br from-[#4285F4]/10 to-[#F8F9FA]">
+      <div className="w-full max-w-md m-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-extrabold bg-gradient-to-r from-[#4285F4] to-[#FF6D00] bg-clip-text text-transparent">
+              QuizPlay Learn
+            </h2>
+            <p className="mt-3 text-[#2D3748] text-sm">
+              Your journey to knowledge begins here
+            </p>
+          </div>
 
-        <div className="mt-8">
+          {/* Google Sign In Button */}
           <button
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full flex items-center justify-center px-4 py-3 rounded-lg border-2 border-gray-200 bg-white hover:bg-gray-50 transition-all duration-200"
           >
             <img
-              className="h-5 w-5 mr-2"
+              className="h-5 w-5 mr-3"
               src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-              alt="Google logo"
+              alt="Google"
             />
-            Continue with Google
+            <span className="text-[#2D3748] font-medium">Continue with Google</span>
           </button>
 
-          <div className="mt-6 relative">
+          {/* Divider */}
+          <div className="my-6 relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300" />
+              <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">
-                Or continue with email
-              </span>
+              <span className="px-4 bg-white text-gray-500">or continue with email</span>
             </div>
           </div>
 
+          {/* Error Message */}
           {error && (
-            <div className="mt-4 p-2 text-sm text-red-600 bg-red-50 rounded">
+            <div className="mb-6 p-3 rounded-lg bg-[#EA4335]/10 border border-[#EA4335]/20 text-[#EA4335] text-sm">
               {error}
             </div>
           )}
 
-          <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
+          {/* Login Form */}
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-[#2D3748] mb-2">
                 Email
               </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter your email"
-                />
-              </div>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]/20 focus:border-[#4285F4] transition-all duration-200"
+                placeholder="Enter your email"
+                required
+              />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-[#2D3748] mb-2">
                 Password
               </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter your password"
-                />
-              </div>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#4285F4]/20 focus:border-[#4285F4] transition-all duration-200"
+                placeholder="Enter your password"
+                required
+              />
             </div>
 
+            {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
-                  id="rememberMe"
-                  name="rememberMe"
                   type="checkbox"
+                  name="rememberMe"
                   checked={formData.rememberMe}
                   onChange={handleChange}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-4 w-4 rounded border-gray-300 text-[#4285F4] focus:ring-[#4285F4]"
                 />
-                <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-900">
+                <label className="ml-2 text-sm text-[#2D3748]">
                   Remember me
                 </label>
               </div>
-
-              <div className="text-sm">
-                <Link to="/forgot-password" className="font-medium text-blue-600 hover:text-blue-500">
-                  Forgot password?
-                </Link>
-              </div>
+              <Link to="/forgot-password" className="text-sm font-medium text-[#4285F4] hover:text-[#4285F4]/80">
+                Forgot password?
+              </Link>
             </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                {loading ? 'Signing in...' : 'Sign In'}
-              </button>
-            </div>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full py-3 px-4 rounded-lg bg-[#4285F4] hover:bg-[#4285F4]/90 text-white font-medium transition-all duration-200 ${
+                loading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {loading ? (
+                <span>Signing in...</span>
+              ) : (
+                <span>Sign in</span>
+              )}
+            </button>
           </form>
         </div>
-      </div>
 
-      <p className="mt-4 text-center text-sm text-gray-600">
-        Don't have an account?{' '}
-        <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
-          Sign up
-        </Link>
-      </p>
+        {/* Sign Up Link */}
+        <p className="mt-6 text-center text-[#2D3748]">
+          Don't have an account?{' '}
+          <Link to="/register" className="font-medium text-[#4285F4] hover:text-[#4285F4]/80">
+            Sign up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

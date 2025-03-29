@@ -38,18 +38,18 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex">
-            {/* Sidebar */}
-            <div className="w-64 fixed h-full bg-white shadow-lg">
-                <div className="p-4">
-                    <h1 className="text-2xl font-bold text-blue-600">QuizPlay</h1>
+        <div className="min-h-screen bg-[#F8F9FA] flex">
+            {/* Enhanced Sidebar */}
+            <div className="w-64 fixed h-full bg-white shadow-xl border-r border-gray-100">
+                <div className="p-6 ">
+                    <h1 className="text-2xl font-extrabold text-[#4285F4]  tracking-tight"> Flash Learn</h1>
                 </div>
-                <nav className="mt-4">
-                    <ul className="space-y-2">
+                <nav className="mt-6">
+                    <ul className="space-y-1.5">
                         <li>
                             <Link
                                 to="/dashboard"
-                                className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                                className="flex items-center px-6 py-3 text-[#2D3748] hover:bg-[#4285F4]/10 hover:text-[#4285F4] transition-all duration-200 font-medium"
                             >
                                 Dashboard
                             </Link>
@@ -57,36 +57,43 @@ const App = () => {
                         <li>
                             <Link
                                 to="/playlists"
-                                className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                                className="flex items-center px-6 py-3 text-[#2D3748] hover:bg-[#4285F4]/10 hover:text-[#4285F4] transition-all duration-200 font-medium"
                             >
                                 Playlists
                             </Link>
                         </li>
+                       
+                        
                         <li>
-                            <Link to="/learn" className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
-                                Learn
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/pdf-quiz" className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                            <Link 
+                                to="/pdf-quiz" 
+                                className="flex items-center px-6 py-3 text-[#2D3748] hover:bg-[#4285F4]/10 hover:text-[#4285F4] transition-all duration-200 font-medium"
+                            >
                                 PDF Quiz
                             </Link>
                         </li>
                         <li>
-                            <Link to="/rewards" className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
-                                Rewards
+                            <Link 
+                                to="/rewards" 
+                                className="flex items-center px-6 py-3 text-[#2D3748] hover:bg-[#4285F4]/10 hover:text-[#4285F4] transition-all duration-200 font-medium group"
+                            >
+                                <span>Rewards</span>
+                                <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-[#FFC107] text-white rounded-full group-hover:bg-[#FF9A00]">New</span>
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to="/leaderboard"
-                                className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                                className="flex items-center px-6 py-3 text-[#2D3748] hover:bg-[#4285F4]/10 hover:text-[#4285F4] transition-all duration-200 font-medium"
                             >
                                 Leaderboard
                             </Link>
                         </li>
                         <li>
-                            <Link to="/profile" className="flex items-center px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                            <Link 
+                                to="/profile" 
+                                className="flex items-center px-6 py-3 text-[#2D3748] hover:bg-[#4285F4]/10 hover:text-[#4285F4] transition-all duration-200 font-medium"
+                            >
                                 Profile
                             </Link>
                         </li>
@@ -94,10 +101,10 @@ const App = () => {
                 </nav>
             </div>
 
-            {/* Main Content */}
+            {/* Enhanced Main Content */}
             <div className="flex-1 ml-64">
                 <Navbar />
-                <div className="pt-16">
+                <div className="pt-16 px-8 pb-8">
                     <Routes>
                         <Route path="/" element={<Navigate to="/dashboard" replace />} />
                         <Route

@@ -7,45 +7,71 @@ const RankBadge = ({ rank }) => {
   const getBadgeStyles = () => {
     switch (rank) {
       case 1:
-        return 'bg-yellow-100 text-yellow-600';
+        return 'bg-[#FFD700] text-white';
       case 2:
-        return 'bg-gray-100 text-gray-600';
+        return 'bg-[#4285F4]/20 text-[#4285F4]';
       case 3:
-        return 'bg-orange-100 text-orange-600';
+        return 'bg-[#FF6D00] text-white';
       default:
-        return 'bg-gray-50 text-gray-600';
+        return 'bg-[#F8F9FA] text-[#2D3748]';
+    }
+  };
+
+  const getBadgeIcon = () => {
+    switch (rank) {
+      case 1:
+        return '🔥';
+      case 2:
+        return '🥈';
+      case 3:
+        return '🥉';
+      default:
+        return rank;
     }
   };
 
   return (
-    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold ${getBadgeStyles()}`}>
-      {rank}
+    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${getBadgeStyles()} shadow-lg transform hover:scale-110 transition-all duration-300`}>
+      {getBadgeIcon()}
     </div>
   );
 };
 
 const UserRankCard = ({ user, rank }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
-      <h2 className="text-lg font-semibold text-gray-800 mb-4">Your Current Rank</h2>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-            {rank}
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="text-2xl">👤</div>
+    <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border-l-4 border-[#4285F4] relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#4285F4]/10 to-transparent rounded-full -translate-y-32 translate-x-32"></div>
+      <h2 className="text-xl font-bold text-[#2D3748] mb-6 flex items-center">
+        <BsLightningCharge className="text-[#FF6D00] mr-2" />
+        Your Performance
+      </h2>
+      <div className="flex items-center justify-between relative">
+        <div className="flex items-center space-x-6">
+          <RankBadge rank={rank} />
+          <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-gradient-to-r from-[#4285F4] to-[#34A853] rounded-full flex items-center justify-center text-white text-xl">
+              {user.fullname.firstname.charAt(0)}
+            </div>
             <div>
-              <h3 className="font-medium text-gray-800">
+              <h3 className="font-bold text-[#2D3748] text-lg">
                 {user.fullname.firstname} {user.fullname.lastname}
               </h3>
-              <p className="text-sm text-gray-500">Total Score: {user.quizzes.totalScore}</p>
+              <p className="text-[#4285F4] font-medium flex items-center">
+                <FaStar className="text-[#FFC107] mr-1" />
+                {user.quizzes.totalScore} Points
+              </p>
             </div>
           </div>
         </div>
-        <div className="flex items-center bg-blue-50 px-3 py-1.5 rounded-full">
-          <BsLightningCharge className="text-blue-600 mr-1" />
-          <span className="text-blue-600 font-medium">{user.quizzes.totalQuizzes} Quizzes</span>
+        <div className="flex items-center gap-4">
+          <div className="bg-[#F8F9FA] px-4 py-2 rounded-full">
+            <div className="text-sm text-[#2D3748] font-medium">Total Quizzes</div>
+            <div className="text-xl font-bold text-[#4285F4]">{user.quizzes.totalQuizzes}</div>
+          </div>
+          <div className="bg-[#F8F9FA] px-4 py-2 rounded-full">
+            <div className="text-sm text-[#2D3748] font-medium">Current Rank</div>
+            <div className="text-xl font-bold text-[#FF6D00]">#{rank}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,43 +80,54 @@ const UserRankCard = ({ user, rank }) => {
 
 const LeaderboardTable = ({ users }) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm">
-      <div className="p-4 border-b border-gray-100">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-[#FFC107]">
+      <div className="p-6 bg-gradient-to-r from-[#FFC107]/10 to-transparent">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold text-gray-800">Global Leaderboard</h2>
+          <h2 className="text-xl font-bold text-[#2D3748] flex items-center">
+            <FaTrophy className="text-[#FFC107] mr-2" />
+            Global Leaderboard
+          </h2>
         </div>
       </div>
       
-      {/* Table Header */}
-      <div className="grid grid-cols-12 gap-4 px-4 py-3 text-sm font-medium text-gray-500 border-b border-gray-100">
+      <div className="grid grid-cols-12 gap-4 px-6 py-4 bg-[#F8F9FA] text-sm font-medium text-[#2D3748]">
         <div className="col-span-1">Rank</div>
         <div className="col-span-5">User</div>
-        <div className="col-span-3 text-center">Quizzes Taken</div>
-        <div className="col-span-3 text-right">Total Score</div>
+        <div className="col-span-3 text-center">Quizzes</div>
+        <div className="col-span-3 text-right">Score</div>
       </div>
 
-      {/* Table Body */}
       <div className="divide-y divide-gray-100">
         {users.map((user, index) => (
-          <div key={user._id} className="grid grid-cols-12 gap-4 px-4 py-4 items-center hover:bg-gray-50">
+          <div key={user._id} 
+            className={`grid grid-cols-12 gap-4 px-6 py-4 items-center transition-all duration-300 hover:bg-[#F8F9FA] ${
+              index < 3 ? 'bg-gradient-to-r from-[#FFC107]/5 to-transparent' : ''
+            }`}
+          >
             <div className="col-span-1">
               <RankBadge rank={index + 1} />
             </div>
             <div className="col-span-5">
-              <div className="flex items-center space-x-3">
-                <div className="text-2xl">👤</div>
+              <div className="flex items-center space-x-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-[#4285F4] to-[#34A853] rounded-full flex items-center justify-center text-white font-medium">
+                  {user.fullname.firstname.charAt(0)}
+                </div>
                 <div>
-                  <h3 className="font-medium text-gray-800">
+                  <h3 className="font-medium text-[#2D3748]">
                     {user.fullname.firstname} {user.fullname.lastname}
                   </h3>
                   <p className="text-sm text-gray-500">{user.email}</p>
                 </div>
               </div>
             </div>
-            <div className="col-span-3 text-center text-gray-600">
-              {user.quizzes.totalQuizzes}
+            <div className="col-span-3 text-center">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-[#4285F4]/10 text-[#4285F4] font-medium">
+                <BsLightningCharge className="mr-1" />
+                {user.quizzes.totalQuizzes}
+              </div>
             </div>
-            <div className="col-span-3 text-right font-medium text-blue-600">
+            <div className="col-span-3 text-right font-bold text-[#34A853] flex items-center justify-end">
+              <FaStar className="text-[#FFC107] mr-1" />
               {user.quizzes.totalScore}
             </div>
           </div>
@@ -142,9 +179,10 @@ const Leaderboard = () => {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex justify-center items-center min-h-[200px]">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-[#4285F4] border-t-transparent rounded-full animate-spin mb-4"></div>
+          <p className="text-[#2D3748] font-medium">Loading leaderboard...</p>
         </div>
       </div>
     );
@@ -152,18 +190,20 @@ const Leaderboard = () => {
 
   if (error) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="text-center text-red-500">
-          {error}
+      <div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center">
+        <div className="bg-[#EA4335]/10 text-[#EA4335] px-6 py-4 rounded-lg">
+          <p className="font-medium">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {currentUser && <UserRankCard user={currentUser} rank={currentUserRank} />}
-      <LeaderboardTable users={users} />
+    <div className="min-h-screen bg-[#F8F9FA] py-8 px-4">
+      <div className="max-w-7xl mx-auto space-y-8">
+        {currentUser && <UserRankCard user={currentUser} rank={currentUserRank} />}
+        <LeaderboardTable users={users} />
+      </div>
     </div>
   );
 };
