@@ -120,3 +120,11 @@ An AI-driven platform that:
      ```
    - **Click the link** shown in the client terminal to open the application.
    - To stop the client, press `Ctrl + C` in the terminal.
+  
+
+### 📩 Contact Us
+If you have any queries or suggestions, feel free to contact us:
+- sachinsharma11175@gmail.com
+- vanshjii021@gmail.com
+- ojhaaparna0@gmail.com
+- ankitgupta23sep@gmail.com
