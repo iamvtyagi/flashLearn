@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 const { promisify } = require('util');
+const os = require('os');
 const execAsync = promisify(exec);
 
 const FFMPEG_URL = 'https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip';
@@ -38,8 +39,13 @@ async function setupFFmpeg() {
         await downloadFile(FFMPEG_URL, DOWNLOAD_PATH);
 
         console.log('Extracting FFmpeg...');
-        // Use powershell to extract zip
-        await execAsync(`powershell -command "Expand-Archive -Path '${DOWNLOAD_PATH}' -DestinationPath '${EXTRACT_PATH}' -Force"`);
+        if (os.platform() === 'win32') {
+            // Use PowerShell on Windows
+            await execAsync(`powershell -command "Expand-Archive -Path '${DOWNLOAD_PATH}' -DestinationPath '${EXTRACT_PATH}' -Force"`);
+        } else {
+            // Use unzip on Linux
+            await execAsync(`unzip ${DOWNLOAD_PATH} -d ${EXTRACT_PATH}`);
+        }
 
         // Move executables to bin directory
         const ffmpegDir = path.join(EXTRACT_PATH, 'ffmpeg-master-latest-win64-gpl', 'bin');
