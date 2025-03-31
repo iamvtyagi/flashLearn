@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded payloads
 app.use(cookieParser()); // Parse cookies
 app.use(
     cors({
-        origin: process.env.FRONTEND_URL,
+        origin: '*',
         credentials: true,
     })
 );
@@ -59,8 +59,6 @@ app.get("/users", async (req, res) => {
         res.status(500).json({ message: "Server Error" });
     }
 });
-
-
 
 
 
