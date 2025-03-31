@@ -56,7 +56,7 @@ An AI-driven platform that:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/flashlearn.git
+   git clone https://github.com/iamvtyagi/flashLearn.git
    cd flashlearn
    ```
 
