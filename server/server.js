@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded payloads
 app.use(cookieParser()); // Parse cookies
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: "https://flashlearn-1.onrender.com",
         credentials: true,
     })
 );
