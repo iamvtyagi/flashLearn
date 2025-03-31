@@ -13,6 +13,7 @@ const videoRoutes = require("./routes/video");
 const userModel = require("./models/user.model");
 const fs = require("fs");
 const path = require("path");
+const ffmpeg = require('ffmpeg-static'); 
 
 dotenv.config();
 
