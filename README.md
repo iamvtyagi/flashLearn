@@ -120,6 +120,23 @@ An AI-driven platform that:
      ```
    - **Click the link** shown in the client terminal to open the application.
    - To stop the client, press `Ctrl + C` in the terminal.
+
+## 📸 Screenshots
+![image](https://github.com/user-attachments/assets/681c4057-0a9b-4a99-81f2-6f7dc0d6a25b)
+![image](https://github.com/user-attachments/assets/f460f9d8-f80f-4d86-bf96-0f678f2653cd)
+![image](https://github.com/user-attachments/assets/5c1a1d2f-423a-471f-888a-c25e7f5cf394)
+![image](https://github.com/user-attachments/assets/6006daaf-0708-480a-a637-7a0b988a9cb7)
+![image](https://github.com/user-attachments/assets/d2006727-0251-4edd-ad2a-ad4113130a2b)
+![image](https://github.com/user-attachments/assets/0dc66ee0-ede0-4a80-b5bb-fbb86c780093)
+![image](https://github.com/user-attachments/assets/30e7a2dd-6a2d-49b4-b4d5-e35bd7eec405)
+![image](https://github.com/user-attachments/assets/2751f546-0f53-406b-887a-1721f546d5ac)
+
+
+
+
+
+
+
   
 
 ### 📩 Contact Us
